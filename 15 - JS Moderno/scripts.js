@@ -67,12 +67,79 @@ console.log(products);
 */
 
 
+
 /*
 5. Destructuring
 
+const fruits = ['Apple', 'Watermelon', 'Grape'];
+const [f1, f2, f3] = fruits
+console.log(f1, f2, f3);
 */
 
 
 
+/*
+6. Spread Operator
 
+let a1 = [1, 2, 3];
+let a2 = [4, 5, 6];
+let a3 = [...a1, ...a2];
+console.log(a3);
+*/
+
+
+
+/*
+7. Classes
+
+class Product {
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+
+  productWithDiscount(discount) {
+    return this.price * ((100 - discount) / 100);
+  }
+}
+
+const shirt = new Product('Camiseta Polo', 70);
+console.log(shirt); // Product {name: 'Camiseta Polo', price: 70}
+console.log(shirt.productWithDiscount(10)); // 63
+*/
+
+
+
+/*
+8. Heranca
+
+class Product {
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+
+  productWithDiscount(discount) {
+    return this.price * ((100 - discount) / 100);
+  }
+}
+
+class ProductWithColors extends Product {
+  constructor(name, price, colors) {
+    super(name, price);
+    this.colors = colors;
+  }
+
+  showColors() {
+    console.log("As cores sao: ");
+    this.colors.forEach((color) => {
+      console.log(color);
+    })
+  }
+}
+
+const hat = new ProductWithColors('Chapeu', 49.99, ['Branco', 'Preto']);
+console.log(hat.showColors());
+console.log(hat.productWithDiscount(10));
+*/
 
