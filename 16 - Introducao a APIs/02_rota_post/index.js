@@ -14,6 +14,12 @@ app.listen(3000);
 // rotas - endpoints
 app.get('/', (req, res) => {
   res.json({
-    message: 'Primeira rota criada com sucesso!'
+    message: 'Testando post'
   })
+})
+
+app.post('/createproduct', (req, res) => {
+  const name = req.body.name;
+  const price = req.body.price;
+  res.json({message: `O produto ${name} com o preco ${price} foi criado com sucesso!`})
 })

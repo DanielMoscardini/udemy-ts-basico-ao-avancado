@@ -17,3 +17,4 @@ app.get('/', (req, res) => {
     message: 'Primeira rota criada com sucesso!'
   })
 })
+
