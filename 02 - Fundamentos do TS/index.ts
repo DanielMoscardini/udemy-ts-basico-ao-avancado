@@ -40,7 +40,6 @@ console.log(typeof inf); // string
 */
 
 let teste: number = 8;
-
 let testeInString = teste.toString();
 
 console.log(typeof teste);
