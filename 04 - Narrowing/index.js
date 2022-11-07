@@ -104,13 +104,3 @@ function showDogDetail(dog:Dog) {
 showDogDetail(turca); // O cachorro é um SRD
 showDogDetail(bob); // O cachorro é da raca Pastor Alemao
 */
-function userReview(star) {
-    if (typeof star === 'boolean') {
-        console.log('O usuario nao deixou nenhuma avaliacao');
-    }
-    else {
-        console.log(`O usuario avaliou com ${star} estrela(s)`);
-    }
-}
-userReview(false);
-userReview(4);
