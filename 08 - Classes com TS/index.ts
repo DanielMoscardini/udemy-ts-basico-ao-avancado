@@ -1,133 +1,134 @@
 /*
-1 Generics.
+1 - Campos em classes.
 
-function showData<T>(arg: T): string {
-  return `O dado é ${arg}`;
+class User {
+  name!: string;
+  age!: number;
 }
 
-console.log(showData(5));
-console.log(showData('Testando generic'));
+const daniel = new User();
 
------------------------------------------------------------------------------------------------------------
+daniel.name = 'Daniel Moscardini';
+daniel.age = 18;
+// daniel.gender = 'Male';
 
-2 Constraint em generic.
+console.log(daniel);
 
-function showProductName<T extends { name: string }>(obj: T) {
-  return `O nome do objeto é ${obj.name}`;
+
+
+2 - Constructor.
+
+class NewUser {
+  name;
+  age;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
 }
 
-const myObj = { name: 'Porta', cor: 'Branca' }
-const otherObj = { price: 19.99,  cor: 'Branca' }
+const daniel = new NewUser('Daniel Moscardini', 18);
 
-console.log(showProductName(myObj));
-// console.log(showProductName(otherObj));
+console.log(daniel);
 
------------------------------------------------------------------------------------------------------------
 
-3 Interfaces com Generics.
 
-interface MyObject<T, U, Q> {
-  name: string;
-  wheels: T;
-  engine: U;
-  color: Q;
+3 - readonly em Classes.
+
+class Car {
+  name;
+  readonly wheels = 4;
+
+  constructor(name: string) {
+    this.name = name;
+  }
 }
 
-type Car = MyObject<number, number, string>;
-type Pen = MyObject<boolean, boolean, string>;
+const car1 = new Car('Onix');
+console.log(car1);
 
-const myCar: Car = { name: "Fusca", wheels: 4, engine: 1.0, color: "Branco" };
-const myPen: Pen = { name: "BIC", wheels: false, engine: false, color: "Azul" };
+car1.name = 'Polo';
+// car1.wheels = 6;
 
-console.log(myCar);
-console.log(myPen);
+console.log(car1);
 
------------------------------------------------------------------------------------------------------------
 
-4. Type Params.
 
-function getSomeKey<T, K extends keyof T>(obj: T, key: K) {
-  return `A chave ${String(key)} existe no objeto, e tem o valor de ${
-    obj[key]
-  }`;
+4 - Heranca e Super.
+
+class Machine {
+  name;
+
+  constructor(name: string) {
+    this.name = name;
+  }
 }
 
-const server = {
-  hd: '2TB',
-  ram: '32GB',
-};
+const trator = new Machine('Trator');
 
-console.log(getSomeKey(server, 'ram'));
-// A chave ram existe no objeto, e tem o valor de 32GB
+class KillerMachine extends Machine {
+  guns;
 
------------------------------------------------------------------------------------------------------------
-
-5. keyof Type Operator.
-
-type Character = {
-  name: string;
-  age: number;
-  hasDriveLicense: boolean;
-};
-
-type C = keyof Character;
-
-function showCharName(obj: Character, name: C): string {
-  return `${obj.name}`;
+  constructor(name: string, guns: number) {
+    super(name);
+    this.guns = guns;
+  }
 }
 
-const myChar: Character = {
-  name: 'Daniel',
-  age: 21,
-  hasDriveLicense: true,
-};
+const destroyer = new KillerMachine('Destroyer', 4);
 
-console.log(showCharName(myChar, 'name')); // Daniel
+console.log(trator);
+console.log(destroyer);
 
------------------------------------------------------------------------------------------------------------
 
-6. typeof Type Operator
 
-const userName: string = 'Daniel';
-const userName2: typeof userName = 'Maria Laura';
+5 - Métodos.
 
-console.log(typeof userName, typeof userName2); // string string
+class Dwarf {
+  name;
 
------------------------------------------------------------------------------------------------------------
+  constructor(name: string) {
+    this.name = name;
+  }
 
-7. Indexed Access types
-
-type Truck = {
-  km: number;
-  kg: number;
-  description: string;
-};
-
-type Km = Truck['km'];
-
-const newTruck: Truck = {
-  km: 10000,
-  kg: 5000,
-  description: 'Caminhao para pouca carga',
-};
-
-function showKm(km: Km) {
-  console.log(`O veiculo tem a km de ${km}`);
+  greeting() {
+    console.log('Speak friend and enter!');
+  }
 }
 
-showKm(newTruck.km); // O veiculo tem a km de 10000
+const dwarf1 = new Dwarf('Gimli');
 
------------------------------------------------------------------------------------------------------------
+console.log(dwarf1);
+dwarf1.greeting();
 
-8. Conditional Expression Type.
 
-interface A {}
 
-interface B extends A {}
+6 - this.
 
-type myType = B extends A ? number : string;
+class Truck {
+  model;
+  hp;
 
-const someVar: myType = 5;
-// const someVar2: myType = '5';
+  constructor(model: string, hp: number) {
+    this.model = model;
+    this.hp = hp;
+  }
+
+  showDetails() {
+    console.log(
+      `Caminhao do modelo: ${this.model} e tem ${this.hp} cavalos de potencia.`
+    );
+  }
+}
+
+const truck1 = new Truck('Volvo', 400);
+
+truck1.showDetails();
+
+
+
+7 -
+
 
 */
